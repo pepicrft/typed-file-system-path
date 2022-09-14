@@ -23,6 +23,11 @@ export class InvalidRelativePathError extends ExtendableError {
 }
 
 interface AbsolutePath {
+  /**
+   * The raw string representing the path.
+   */
+  readonly path: string
+
   /** Returns the path to the parent directory */
   readonly dirname: string
 
@@ -33,6 +38,11 @@ interface AbsolutePath {
 }
 
 interface RelativePath {
+  /**
+   * The raw string representing the path.
+   */
+  readonly path: string
+
   /**
    * Appends a relative path to the current path.
    */
@@ -61,7 +71,7 @@ class RelativePathImplementation implements RelativePath {
   }
 
   appending(path: RelativePath): RelativePath {
-    return joinPath(this.path, path)
+    return new RelativePathImplementation(joinPath(this.path, path.path))
   }
 }
 

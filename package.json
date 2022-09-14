@@ -25,6 +25,7 @@
     "@babel/core": "^7.19.1",
     "@changesets/cli": "^2.24.4",
     "@shopify/eslint-plugin": "42.0.1",
+    "@types/node": "^18.7.18",
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
     "eslint": "^8.23.1",
