@@ -42,6 +42,8 @@
     "singleQuote": true
   },
   "dependencies": {
-    "shx": "^0.3.4"
+    "pathe": "^0.3.7",
+    "shx": "^0.3.4",
+    "ts-error": "^1.0.6"
   }
 }

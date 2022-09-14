@@ -10,13 +10,17 @@ specifiers:
   eslint-plugin-import: 2.26.0
   eslint-plugin-jest: 27.0.4
   eslint-plugin-prettier: 4.2.1
+  pathe: ^0.3.7
   prettier: ^2.7.1
   shx: ^0.3.4
+  ts-error: ^1.0.6
   typescript: ^4.8.3
   vitest: ^0.23.2
 
 dependencies:
+  pathe: 0.3.7
   shx: 0.3.4
+  ts-error: 1.0.6
 
 devDependencies:
   '@babel/core': 7.19.1
@@ -2308,6 +2312,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /pathe/0.3.7:
+    resolution: {integrity: sha512-yz7GK+kSsS27x727jtXpd5VT4dDfP/JDIQmaowfxyWCnFjOWtE1VIh7i6TzcSfzW0n4+bRQztj1VdKnITNq/MA==}
+    dev: false
+
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
@@ -2634,6 +2642,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /ts-error/1.0.6:
+    resolution: {integrity: sha512-tLJxacIQUM82IR7JO1UUkKlYuUTmoY9HBJAmNWFzheSlDS5SPMcNIepejHJa4BpPQLAcbRhRf3GDJzyj6rbKvA==}
+    dev: false
 
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
