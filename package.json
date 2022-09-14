@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "description": "Typed primitives for Typescript to work with file paths",
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "shx rm -rf dist/ && tsc -p tsconfig.build.json",
     "test": "vitest run",
     "lint": "eslint './**/*.{js,ts}'",
-    "lint:fix": "eslint './**/*.{js,ts}' --fix"
+    "lint:fix": "eslint './**/*.{js,ts}' --fix",
+    "prepack": "pnpm run build"
   },
   "keywords": [
     "file path",
