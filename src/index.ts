@@ -49,13 +49,13 @@ export interface Path {
    * it removes the last component from the path.
    * @example
    * // returns /project/src
-   * absolutePath('/project/src/index.ts').dirname
+   * absolutePath('/project/src/index.ts').parentDirectory
    *
    * @example
    * // returns C:/project/src
-   * absolutePath('C:\\project\\src\\index.ts').dirname
+   * absolutePath('C:\\project\\src\\index.ts').parentDirectory
    */
-  readonly dirname: string
+  readonly parentDirectory: string
 
   /**
    * Returns the last component of the path:
@@ -120,7 +120,7 @@ class AbsolutePathImplementation implements AbsolutePath {
     return extension === '' ? undefined : extension
   }
 
-  get dirname(): string {
+  get parentDirectory(): string {
     return dirname(this.path)
   }
 
@@ -151,7 +151,7 @@ class RelativePathImplementation implements RelativePath {
     return extension === '' ? undefined : extension
   }
 
-  get dirname(): string {
+  get parentDirectory(): string {
     return dirname(this.path)
   }
 

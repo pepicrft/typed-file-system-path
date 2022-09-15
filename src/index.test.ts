@@ -28,9 +28,12 @@ describe('AbsolutePath', () => {
   test.each([
     ['/project/src', '/project/src/index.ts'],
     ['C:/project/src', 'C:\\project\\src\\index.ts'],
-  ])('dirname returns %s when the path is %s', (dirname, testPath) => {
-    expect(absolutePath(testPath).dirname).toEqual(dirname)
-  })
+  ])(
+    'parentDirectory returns %s when the path is %s',
+    (parentDirectory, testPath) => {
+      expect(absolutePath(testPath).parentDirectory).toEqual(parentDirectory)
+    }
+  )
 
   test.each([
     ['index', '/project/src/index.ts'],
@@ -62,9 +65,12 @@ describe('RelativePath', () => {
   test.each([
     ['project/src', 'project/src/index.ts'],
     ['project/src', 'project\\src\\index.ts'],
-  ])('dirname returns %s when the path is %s', (dirname, testPath) => {
-    expect(relativePath(testPath).dirname).toEqual(dirname)
-  })
+  ])(
+    'parentDirectory returns %s when the path is %s',
+    (parentDirectory, testPath) => {
+      expect(relativePath(testPath).parentDirectory).toEqual(parentDirectory)
+    }
+  )
 
   test.each([
     ['index', 'project/src/index.ts'],

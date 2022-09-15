@@ -19,7 +19,7 @@ const dirAbsolutePath = absolutePath("/path/to/dir")
 const fileRelativePath = relativePath("./tsconfig.json")
 
 /** Functions common across absolute and relative paths **/
-dirAbsolutePath.dirname // The parent directory path
+dirAbsolutePath.parentDirectory // The parent directory path
 dirAbsolutePath.extension // The path extension or undefined otherwise
 dirAbsolutePath.basename // The path's last component
 dirAbsolutePath.basenameWithoutExtension // The path's last component without the extension
