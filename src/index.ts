@@ -1,4 +1,11 @@
-import { dirname, join as joinPath } from 'pathe'
+import {
+  dirname,
+  normalize,
+  basename,
+  extname,
+  join as joinPath,
+  isAbsolute,
+} from 'pathe'
 
 import { ExtendableError } from 'ts-error'
 
@@ -22,14 +29,64 @@ export class InvalidRelativePathError extends ExtendableError {
   }
 }
 
-interface AbsolutePath {
+export interface Path {
+  /**
+   * Returns the extension of the path or undefined if the
+   * path doesn't have a extension. Note that the extension
+   * includes the dot prefix.
+   * @example
+   * // returns .ts
+   * absolutePath('/project/src/index.ts').extension
+   *
+   * @example
+   * // returns .ts
+   * absolutePath('C:\\project\\src\\index.ts').extension
+   */
+  readonly extension?: string
+
+  /**
+   * Returns the path to the parent directory. In other words,
+   * it removes the last component from the path.
+   * @example
+   * // returns /project/src
+   * absolutePath('/project/src/index.ts').dirname
+   *
+   * @example
+   * // returns C:/project/src
+   * absolutePath('C:\\project\\src\\index.ts').dirname
+   */
+  readonly dirname: string
+
+  /**
+   * Returns the last component of the path:
+   * @example
+   * // returns index.ts
+   * absolutePath('/project/src/index.ts').basename
+   *
+   * @example
+   * // returns index.ts
+   * absolutePath('C:\\project\\src\\index.ts').basename
+   */
+  readonly basename: string
+
+  /**
+   * Returns the last component of the path without the extension.
+   * @example
+   * // returns index
+   * absolutePath('/project/src/index.ts').basenameWithoutExtension
+   *
+   * @example
+   * // returns index
+   * absolutePath('C:\\project\\src\\index.ts').basenameWithoutExtension
+   */
+  readonly basenameWithoutExtension: string
+}
+
+export interface AbsolutePath extends Path {
   /**
    * The raw string representing the path.
    */
   readonly path: string
-
-  /** Returns the path to the parent directory */
-  readonly dirname: string
 
   /**
    * Returns the path relative to an absolute path.
@@ -37,7 +94,7 @@ interface AbsolutePath {
   relativeTo: (path: AbsolutePath) => RelativePath
 }
 
-interface RelativePath {
+export interface RelativePath extends Path {
   /**
    * The raw string representing the path.
    */
@@ -52,11 +109,27 @@ interface RelativePath {
 class AbsolutePathImplementation implements AbsolutePath {
   path: string
   constructor(path: string) {
-    this.path = path
+    if (!isAbsolute(path)) {
+      throw new InvalidAbsolutePathError(path)
+    }
+    this.path = normalize(path)
+  }
+
+  get extension(): string | undefined {
+    const extension = extname(this.path)
+    return extension === '' ? undefined : extension
   }
 
   get dirname(): string {
     return dirname(this.path)
+  }
+
+  get basename(): string {
+    return basename(this.path)
+  }
+
+  get basenameWithoutExtension(): string {
+    return this.basename.split('.')[0]
   }
 
   relativeTo(path: AbsolutePath): RelativePath {
@@ -67,7 +140,27 @@ class AbsolutePathImplementation implements AbsolutePath {
 class RelativePathImplementation implements RelativePath {
   path: string
   constructor(path: string) {
+    if (isAbsolute(path)) {
+      throw new InvalidRelativePathError(path)
+    }
     this.path = path
+  }
+
+  get extension(): string | undefined {
+    const extension = extname(this.path)
+    return extension === '' ? undefined : extension
+  }
+
+  get dirname(): string {
+    return dirname(this.path)
+  }
+
+  get basename(): string {
+    return basename(this.path)
+  }
+
+  get basenameWithoutExtension(): string {
+    return this.basename.split('.')[0]
   }
 
   appending(path: RelativePath): RelativePath {

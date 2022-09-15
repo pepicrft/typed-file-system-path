@@ -6,6 +6,7 @@
 
 ## Usage
 
+
 ```ts
 import { relativePath, absolutePath } from "typed-file-system-path"
 
@@ -17,10 +18,17 @@ const dirAbsolutePath = absolutePath("/path/to/dir")
 // Throws if the path is not relative
 const fileRelativePath = relativePath("./tsconfig.json")
 
+/** Functions common across absolute and relative paths **/
+dirAbsolutePath.dirname // The parent directory path
+dirAbsolutePath.extension // The path extension or undefined otherwise
+dirAbsolutePath.basename // The path's last component
+dirAbsolutePath.basenameWithoutExtension // The path's last component without the extension
+
 /** Absolute path convenient functions **/
 
 
 /** Relative path convenient functions **/
+
 ```
 
 
