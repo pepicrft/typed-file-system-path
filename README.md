@@ -11,24 +11,22 @@
 import { relativePath, absolutePath } from "typed-file-system-path"
 
 // Initialize an absolute path
-// Throws if the path is not absolute
+// @throws InvalidAbsolutePathError if the path is not absolute.
 const dirAbsolutePath = absolutePath("/path/to/dir")
 
 // Initialize a relative path
-// Throws if the path is not relative
+// @throws InvalidRelativePathError if the path is not relative.
 const fileRelativePath = relativePath("./tsconfig.json")
 
 /** Functions common across absolute and relative paths **/
-dirAbsolutePath.parentDirectory // The parent directory path
-dirAbsolutePath.extension // The path extension or undefined otherwise
-dirAbsolutePath.basename // The path's last component
-dirAbsolutePath.basenameWithoutExtension // The path's last component without the extension
+path.parentDirectory // The parent directory path
+path.extension // The path extension or undefined otherwise
+path.basename // The path's last component
+path.basenameWithoutExtension // The path's last component without the extension
 
-/** Absolute path convenient functions **/
-
-
-/** Relative path convenient functions **/
-
+path.appending("src", "index.ts") // Returns a new path appending a relative path
+path.appending("src/index.ts")
+path.appending(relativePath("src/index.ts"))
 ```
 
 

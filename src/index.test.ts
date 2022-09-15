@@ -1,4 +1,4 @@
-import { test, it, expect, describe } from 'vitest'
+import { test, expect, describe } from 'vitest'
 import {
   relativePath,
   absolutePath,
@@ -7,6 +7,17 @@ import {
 } from './index.js'
 
 describe('AbsolutePath', () => {
+  test('toString returns the right value', () => {
+    // Given
+    const path = absolutePath('/project')
+
+    // When
+    const got = path.toString()
+
+    // Then
+    expect(got).toEqual('AbsolutePath(/project)')
+  })
+
   test.each([['relative/path'], ['relative\\path']])(
     "throws an error if it's initialized with the relative path %s",
     (relativePath) => {
@@ -52,16 +63,28 @@ describe('AbsolutePath', () => {
   })
 
   test('appending returns the right value', () => {
-    expect(absolutePath('/project').appending('src', 'index.ts').path).toEqual(
-      '/project/src/index.ts'
-    )
     expect(
-      absolutePath('/project').appending(relativePath('src/index.ts')).path
+      absolutePath('/project').appending('src', 'index.ts').pathString
+    ).toEqual('/project/src/index.ts')
+    expect(
+      absolutePath('/project').appending(relativePath('src/index.ts'))
+        .pathString
     ).toEqual('/project/src/index.ts')
   })
 })
 
 describe('RelativePath', () => {
+  test('toString returns the right value', () => {
+    // Given
+    const path = relativePath('project')
+
+    // When
+    const got = path.toString()
+
+    // Then
+    expect(got).toEqual('RelativePath(project)')
+  })
+
   test.each([['/relative/path', 'C:\\relative\\path']])(
     "throws an error if it's initialized with the absolute path %s",
     (testPath) => {
@@ -98,11 +121,11 @@ describe('RelativePath', () => {
   })
 
   test('appending returns the right value', () => {
-    expect(relativePath('project').appending('src', 'index.ts').path).toEqual(
-      'project/src/index.ts'
-    )
     expect(
-      relativePath('project').appending(relativePath('src/index.ts')).path
+      relativePath('project').appending('src', 'index.ts').pathString
+    ).toEqual('project/src/index.ts')
+    expect(
+      relativePath('project').appending(relativePath('src/index.ts')).pathString
     ).toEqual('project/src/index.ts')
   })
 })

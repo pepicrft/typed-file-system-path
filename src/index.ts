@@ -86,7 +86,7 @@ export interface AbsolutePath extends Path {
   /**
    * The raw string representing the path.
    */
-  readonly path: string
+  readonly pathString: string
 
   /**
    * Returns true if the path represents a root directory.
@@ -116,7 +116,7 @@ export interface RelativePath extends Path {
   /**
    * The raw string representing the path.
    */
-  readonly path: string
+  readonly pathString: string
 
   /**
    * Appends a relative path to the current relative path.
@@ -132,31 +132,35 @@ export interface RelativePath extends Path {
 }
 
 class AbsolutePathImplementation implements AbsolutePath {
-  path: string
+  pathString: string
   constructor(path: string) {
     if (!isAbsolute(path)) {
       throw new InvalidAbsolutePathError(path)
     }
-    this.path = normalize(path)
+    this.pathString = normalize(path)
+  }
+
+  toString(): string {
+    return `AbsolutePath(${this.pathString})`
   }
 
   get extension(): string | undefined {
-    const extension = extname(this.path)
+    const extension = extname(this.pathString)
     return extension === '' ? undefined : extension
   }
 
   get parentDirectory(): string {
-    return dirname(this.path)
+    return dirname(this.pathString)
   }
 
   get basename(): string {
-    return basename(this.path)
+    return basename(this.pathString)
   }
 
   get isRoot(): boolean {
     // Strips out the C: prefix in Windows paths
     const regex = /^([A-Z]:)?(?<path>.+)$/
-    return this.path.match(regex)?.groups?.path === '/'
+    return this.pathString.match(regex)?.groups?.path === '/'
   }
 
   get basenameWithoutExtension(): string {
@@ -168,35 +172,39 @@ class AbsolutePathImplementation implements AbsolutePath {
       if (typeof path === 'string') {
         return path
       } else {
-        return path.path
+        return path.pathString
       }
     })
     return new AbsolutePathImplementation(
-      joinPath(this.path, ...pathComponents)
+      joinPath(this.pathString, ...pathComponents)
     )
   }
 }
 
 class RelativePathImplementation implements RelativePath {
-  path: string
+  pathString: string
   constructor(path: string) {
     if (isAbsolute(path)) {
       throw new InvalidRelativePathError(path)
     }
-    this.path = path
+    this.pathString = path
+  }
+
+  toString(): string {
+    return `RelativePath(${this.pathString})`
   }
 
   get extension(): string | undefined {
-    const extension = extname(this.path)
+    const extension = extname(this.pathString)
     return extension === '' ? undefined : extension
   }
 
   get parentDirectory(): string {
-    return dirname(this.path)
+    return dirname(this.pathString)
   }
 
   get basename(): string {
-    return basename(this.path)
+    return basename(this.pathString)
   }
 
   get basenameWithoutExtension(): string {
@@ -208,11 +216,11 @@ class RelativePathImplementation implements RelativePath {
       if (typeof path === 'string') {
         return path
       } else {
-        return path.path
+        return path.pathString
       }
     })
     return new RelativePathImplementation(
-      joinPath(this.path, ...pathComponents)
+      joinPath(this.pathString, ...pathComponents)
     )
   }
 }
