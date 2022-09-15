@@ -41,6 +41,24 @@ describe('AbsolutePath', () => {
   ])('basename returns %s when the path is %s', (basename, testPath) => {
     expect(absolutePath(testPath).basenameWithoutExtension).toEqual(basename)
   })
+
+  test.each([
+    [true, '/'],
+    [false, '/project'],
+    [true, 'C:\\'],
+    [false, 'C:\\project'],
+  ])('isRoot returns %s when the path is %s', (isRoot, testPath) => {
+    expect(absolutePath(testPath).isRoot).toEqual(isRoot)
+  })
+
+  test('appending returns the right value', () => {
+    expect(absolutePath('/project').appending('src', 'index.ts').path).toEqual(
+      '/project/src/index.ts'
+    )
+    expect(
+      absolutePath('/project').appending(relativePath('src/index.ts')).path
+    ).toEqual('/project/src/index.ts')
+  })
 })
 
 describe('RelativePath', () => {
@@ -79,15 +97,12 @@ describe('RelativePath', () => {
     expect(relativePath(testPath).basenameWithoutExtension).toEqual(basename)
   })
 
-  test('appending appends the new relative path', () => {
-    // Given
-    const first = relativePath('first')
-    const second = relativePath('second')
-
-    // When
-    const got = first.appending(second)
-
-    // Then
-    expect(got.path).toEqual('first/second')
+  test('appending returns the right value', () => {
+    expect(relativePath('project').appending('src', 'index.ts').path).toEqual(
+      'project/src/index.ts'
+    )
+    expect(
+      relativePath('project').appending(relativePath('src/index.ts')).path
+    ).toEqual('project/src/index.ts')
   })
 })

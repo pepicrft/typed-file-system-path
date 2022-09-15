@@ -89,9 +89,27 @@ export interface AbsolutePath extends Path {
   readonly path: string
 
   /**
-   * Returns the path relative to an absolute path.
+   * Returns true if the path represents a root directory.
+   * @example
+   * // returns true
+   * absolutePath('/').isRoot
+   * @example
+   * // returns false
+   * absolutePath('/project').isRoot
    */
-  relativeTo: (path: AbsolutePath) => RelativePath
+  readonly isRoot: boolean
+
+  /**
+   * Appends a relative path to the current absolute path.
+   * @example
+   * // returns absolutepath('/project/src/index.ts')
+   * absolutePath('/project').appending("src", "index.ts")
+   *
+   * @example
+   * // returns absolutepath('/project/src/index.ts')
+   * absolutePath('/project').appending(relativePath("src/index.ts"))
+   */
+  appending: <T extends string | RelativePath>(...path: T[]) => AbsolutePath
 }
 
 export interface RelativePath extends Path {
@@ -101,9 +119,16 @@ export interface RelativePath extends Path {
   readonly path: string
 
   /**
-   * Appends a relative path to the current path.
+   * Appends a relative path to the current relative path.
+   * @example
+   * // returns absolutepath('project/src/index.ts')
+   * relativePath('project').appending("src", "index.ts")
+   *
+   * @example
+   * // returns relativePath('project/src/index.ts')
+   * relativePath('project').appending(relativePath("src/index.ts"))
    */
-  appending: (path: RelativePath) => RelativePath
+  appending: <T extends string | RelativePath>(...path: T[]) => RelativePath
 }
 
 class AbsolutePathImplementation implements AbsolutePath {
@@ -128,12 +153,27 @@ class AbsolutePathImplementation implements AbsolutePath {
     return basename(this.path)
   }
 
+  get isRoot(): boolean {
+    // Strips out the C: prefix in Windows paths
+    const regex = /^([A-Z]:)?(?<path>.+)$/
+    return this.path.match(regex)?.groups?.path === '/'
+  }
+
   get basenameWithoutExtension(): string {
     return this.basename.split('.')[0]
   }
 
-  relativeTo(path: AbsolutePath): RelativePath {
-    return relativePath('')
+  appending<T extends string | RelativePath>(...paths: T[]): AbsolutePath {
+    const pathComponents = paths.map((path) => {
+      if (typeof path === 'string') {
+        return path
+      } else {
+        return path.path
+      }
+    })
+    return new AbsolutePathImplementation(
+      joinPath(this.path, ...pathComponents)
+    )
   }
 }
 
@@ -163,8 +203,17 @@ class RelativePathImplementation implements RelativePath {
     return this.basename.split('.')[0]
   }
 
-  appending(path: RelativePath): RelativePath {
-    return new RelativePathImplementation(joinPath(this.path, path.path))
+  appending<T extends string | RelativePath>(...paths: T[]): RelativePath {
+    const pathComponents = paths.map((path) => {
+      if (typeof path === 'string') {
+        return path
+      } else {
+        return path.path
+      }
+    })
+    return new RelativePathImplementation(
+      joinPath(this.path, ...pathComponents)
+    )
   }
 }
 
