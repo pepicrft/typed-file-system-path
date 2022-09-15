@@ -1,11 +1,9 @@
 {
   "name": "typed-file-system-path",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "Typed primitives for Typescript to work with file paths",
   "type": "module",
-  "exports": {
-    "exports": "./dist/index.js"
-  },
+  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
