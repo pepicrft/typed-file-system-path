@@ -2,7 +2,9 @@
 
 [![typed-file-system-path](https://github.com/craftweg/typed-file-system-path/actions/workflows/typed-file-system-path.yml/badge.svg)](https://github.com/craftweg/typed-file-system-path/actions/workflows/typed-file-system-path.yml)
 
-`typed-file-system-path` takes inspiration from [Path.swift](https://github.com/apple/swift-tools-support-core/blob/main/Sources/TSCBasic/Path.swift) in [swift-tools-support-core](https://github.com/apple/swift-tools-support-core/blob/main/Sources/TSCBasic/Path.swift) and provides typed primitives to work with file-system paths instead of strings.
+`typed-file-system-path` takes inspiration from [Path.swift](https://github.com/apple/swift-tools-support-core/blob/main/Sources/TSCBasic/Path.swift) in [swift-tools-support-core](https://github.com/apple/swift-tools-support-core/blob/main/Sources/TSCBasic/Path.swift) and provides typed primitives to work with file-system paths instead of strings. Even though it might seem unnecessary because it wraps a the `string` representing the path, it allows designing APIs that make it explicit if they work with absolute or relative paths and logic that doesn't have to make any assumptions.
+
+We **strongly recommend** turning relative paths into absolute ones as soon as they enter the system. For example, if a path is passed through a flag in a CLI, make it absolute before you pass it down.
 
 ## Usage
 
