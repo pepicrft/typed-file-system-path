@@ -1,5 +1,11 @@
 # typed-file-system-path
 
+## 0.8.0
+
+### Minor Changes
+
+- feda047: Add types attribute to the "package.json"
+
 ## 0.7.0
 
 ### Minor Changes
