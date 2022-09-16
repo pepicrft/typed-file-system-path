@@ -1,5 +1,11 @@
 # typed-file-system-path
 
+## 0.7.0
+
+### Minor Changes
+
+- 7935d44: Fix package.json syntax again
+
 ## 0.6.0
 
 ### Minor Changes
