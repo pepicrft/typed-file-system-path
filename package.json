@@ -3,7 +3,11 @@
   "version": "0.4.0",
   "description": "Typed primitives for Typescript to work with file paths",
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+  },
   "files": [
     "dist"
   ],
