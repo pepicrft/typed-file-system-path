@@ -1,5 +1,11 @@
 # typed-file-system-path
 
+## 0.6.0
+
+### Minor Changes
+
+- e75ad6f: Fix package.json not exporting modules properly
+
 ## 0.5.0
 
 ### Minor Changes
