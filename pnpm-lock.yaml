@@ -17,7 +17,7 @@ specifiers:
   shx: ^0.3.4
   ts-error: ^1.0.6
   typescript: 4.8.3
-  vitest: 0.23.2
+  vitest: 0.23.4
 
 dependencies:
   pathe: 0.3.7
@@ -38,7 +38,7 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_cabrci5exjdaojcvd6xoxgeowu
   prettier: 2.7.1
   typescript: 4.8.3
-  vitest: 0.23.2
+  vitest: 0.23.4
 
 packages:
 
@@ -3655,8 +3655,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.23.2:
-    resolution: {integrity: sha512-kTBKp3ROPDkYC+x2zWt4znkDtnT08W1FQ6ngRFuqxpBGNuNVS+eWZKfffr8y2JGvEzZ9EzMAOcNaiqMj/FZqMw==}
+  /vitest/0.23.4:
+    resolution: {integrity: sha512-iukBNWqQAv8EKDBUNntspLp9SfpaVFbmzmM0sNcnTxASQZMzRw3PsM6DMlsHiI+I6GeO5/sYDg3ecpC+SNFLrQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
