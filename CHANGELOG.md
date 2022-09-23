@@ -1,5 +1,11 @@
 # typed-file-system-path
 
+## 0.9.0
+
+### Minor Changes
+
+- a42c195: Return the raw path from toString
+
 ## 0.8.0
 
 ### Minor Changes
