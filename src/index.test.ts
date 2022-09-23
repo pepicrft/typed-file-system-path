@@ -15,7 +15,7 @@ describe('AbsolutePath', () => {
     const got = path.toString()
 
     // Then
-    expect(got).toEqual('AbsolutePath(/project)')
+    expect(got).toEqual('/project')
   })
 
   test.each([['relative/path'], ['relative\\path']])(
@@ -82,7 +82,7 @@ describe('RelativePath', () => {
     const got = path.toString()
 
     // Then
-    expect(got).toEqual('RelativePath(project)')
+    expect(got).toEqual('project')
   })
 
   test.each([['/relative/path', 'C:\\relative\\path']])(

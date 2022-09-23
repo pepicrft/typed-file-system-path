@@ -141,7 +141,7 @@ class AbsolutePathImplementation implements AbsolutePath {
   }
 
   toString(): string {
-    return `AbsolutePath(${this.pathString})`
+    return this.pathString
   }
 
   get extension(): string | undefined {
@@ -191,7 +191,7 @@ class RelativePathImplementation implements RelativePath {
   }
 
   toString(): string {
-    return `RelativePath(${this.pathString})`
+    return this.pathString
   }
 
   get extension(): string | undefined {
