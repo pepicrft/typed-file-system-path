@@ -1,5 +1,12 @@
 # typed-file-system-path
 
+## 0.10.0
+
+### Minor Changes
+
+- 91b5acd: Rename appending to parentDirectory
+- 11af7b5: Update parentDirectory return type to be RelativePath or AbsolutePath instead of string
+
 ## 0.9.0
 
 ### Minor Changes
