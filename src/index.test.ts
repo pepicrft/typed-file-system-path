@@ -42,7 +42,9 @@ describe('AbsolutePath', () => {
   ])(
     'parentDirectory returns %s when the path is %s',
     (parentDirectory, testPath) => {
-      expect(absolutePath(testPath).parentDirectory).toEqual(parentDirectory)
+      expect(absolutePath(testPath).parentDirectory).toEqual(
+        absolutePath(parentDirectory)
+      )
     }
   )
 
@@ -62,13 +64,15 @@ describe('AbsolutePath', () => {
     expect(absolutePath(testPath).isRoot).toEqual(isRoot)
   })
 
-  test('appending returns the right value', () => {
+  test('pathAppendingComponent returns the right value', () => {
     expect(
-      absolutePath('/project').appending('src', 'index.ts').pathString
+      absolutePath('/project').pathAppendingComponent('src', 'index.ts')
+        .pathString
     ).toEqual('/project/src/index.ts')
     expect(
-      absolutePath('/project').appending(relativePath('src/index.ts'))
-        .pathString
+      absolutePath('/project').pathAppendingComponent(
+        relativePath('src/index.ts')
+      ).pathString
     ).toEqual('/project/src/index.ts')
   })
 })
@@ -109,7 +113,9 @@ describe('RelativePath', () => {
   ])(
     'parentDirectory returns %s when the path is %s',
     (parentDirectory, testPath) => {
-      expect(relativePath(testPath).parentDirectory).toEqual(parentDirectory)
+      expect(relativePath(testPath).parentDirectory).toEqual(
+        relativePath(parentDirectory)
+      )
     }
   )
 
@@ -122,10 +128,13 @@ describe('RelativePath', () => {
 
   test('appending returns the right value', () => {
     expect(
-      relativePath('project').appending('src', 'index.ts').pathString
+      relativePath('project').pathAppendingComponent('src', 'index.ts')
+        .pathString
     ).toEqual('project/src/index.ts')
     expect(
-      relativePath('project').appending(relativePath('src/index.ts')).pathString
+      relativePath('project').pathAppendingComponent(
+        relativePath('src/index.ts')
+      ).pathString
     ).toEqual('project/src/index.ts')
   })
 })

@@ -45,19 +45,6 @@ export interface Path {
   readonly extension?: string
 
   /**
-   * Returns the path to the parent directory. In other words,
-   * it removes the last component from the path.
-   * @example
-   * // returns /project/src
-   * absolutePath('/project/src/index.ts').parentDirectory
-   *
-   * @example
-   * // returns C:/project/src
-   * absolutePath('C:\\project\\src\\index.ts').parentDirectory
-   */
-  readonly parentDirectory: string
-
-  /**
    * Returns the last component of the path:
    * @example
    * // returns index.ts
@@ -109,7 +96,22 @@ export interface AbsolutePath extends Path {
    * // returns absolutepath('/project/src/index.ts')
    * absolutePath('/project').appending(relativePath("src/index.ts"))
    */
-  appending: <T extends string | RelativePath>(...path: T[]) => AbsolutePath
+  pathAppendingComponent: <T extends string | RelativePath>(
+    ...path: T[]
+  ) => AbsolutePath
+
+  /**
+   * Returns the path to the parent directory. In other words,
+   * it removes the last component from the path.
+   * @example
+   * // returns /project/src
+   * absolutePath('/project/src/index.ts').parentDirectory
+   *
+   * @example
+   * // returns C:/project/src
+   * absolutePath('C:\\project\\src\\index.ts').parentDirectory
+   */
+  readonly parentDirectory: AbsolutePath
 }
 
 export interface RelativePath extends Path {
@@ -128,7 +130,22 @@ export interface RelativePath extends Path {
    * // returns relativePath('project/src/index.ts')
    * relativePath('project').appending(relativePath("src/index.ts"))
    */
-  appending: <T extends string | RelativePath>(...path: T[]) => RelativePath
+  pathAppendingComponent: <T extends string | RelativePath>(
+    ...path: T[]
+  ) => RelativePath
+
+  /**
+   * Returns the path to the parent directory. In other words,
+   * it removes the last component from the path.
+   * @example
+   * // returns /project/src
+   * relativePath('/project/src/index.ts').parentDirectory
+   *
+   * @example
+   * // returns C:/project/src
+   * relativePath('C:\\project\\src\\index.ts').parentDirectory
+   */
+  readonly parentDirectory: RelativePath
 }
 
 class AbsolutePathImplementation implements AbsolutePath {
@@ -149,8 +166,8 @@ class AbsolutePathImplementation implements AbsolutePath {
     return extension === '' ? undefined : extension
   }
 
-  get parentDirectory(): string {
-    return dirname(this.pathString)
+  get parentDirectory(): AbsolutePath {
+    return absolutePath(dirname(this.pathString))
   }
 
   get basename(): string {
@@ -167,7 +184,9 @@ class AbsolutePathImplementation implements AbsolutePath {
     return this.basename.split('.')[0]
   }
 
-  appending<T extends string | RelativePath>(...paths: T[]): AbsolutePath {
+  pathAppendingComponent<T extends string | RelativePath>(
+    ...paths: T[]
+  ): AbsolutePath {
     const pathComponents = paths.map((path) => {
       if (typeof path === 'string') {
         return path
@@ -199,8 +218,8 @@ class RelativePathImplementation implements RelativePath {
     return extension === '' ? undefined : extension
   }
 
-  get parentDirectory(): string {
-    return dirname(this.pathString)
+  get parentDirectory(): RelativePath {
+    return relativePath(dirname(this.pathString))
   }
 
   get basename(): string {
@@ -211,7 +230,9 @@ class RelativePathImplementation implements RelativePath {
     return this.basename.split('.')[0]
   }
 
-  appending<T extends string | RelativePath>(...paths: T[]): RelativePath {
+  pathAppendingComponent<T extends string | RelativePath>(
+    ...paths: T[]
+  ): RelativePath {
     const pathComponents = paths.map((path) => {
       if (typeof path === 'string') {
         return path
