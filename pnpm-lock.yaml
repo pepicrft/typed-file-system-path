@@ -4,7 +4,7 @@ specifiers:
   '@babel/core': 7.20.5
   '@changesets/cli': 2.25.2
   '@shopify/eslint-plugin': 42.0.1
-  '@types/node': 18.11.7
+  '@types/node': 18.11.13
   '@typescript-eslint/eslint-plugin': 5.46.0
   '@typescript-eslint/parser': 5.46.0
   eslint: 8.26.0
@@ -28,7 +28,7 @@ devDependencies:
   '@babel/core': 7.20.5
   '@changesets/cli': 2.25.2
   '@shopify/eslint-plugin': 42.0.1_e745mf5f4o42vrne524khi2ab4
-  '@types/node': 18.11.7
+  '@types/node': 18.11.13
   '@typescript-eslint/eslint-plugin': 5.46.0_b4fgpvx3lzusj6d4cruqy3eewe
   '@typescript-eslint/parser': 5.46.0_wyqvi574yv7oiwfeinomdzmc3m
   eslint: 8.26.0
@@ -670,8 +670,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/18.11.7:
-    resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==}
+  /@types/node/18.11.13:
+    resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -3762,7 +3762,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.7
+      '@types/node': 18.11.13
       acorn: 8.8.0
       acorn-walk: 8.2.0
       chai: 4.3.6
