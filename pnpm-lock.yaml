@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@babel/core': 7.20.12
   '@changesets/cli': 2.26.0
-  '@shopify/eslint-plugin': 42.0.2
+  '@shopify/eslint-plugin': 42.0.3
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.48.1
   '@typescript-eslint/parser': 5.48.1
@@ -27,7 +27,7 @@ dependencies:
 devDependencies:
   '@babel/core': 7.20.12
   '@changesets/cli': 2.26.0
-  '@shopify/eslint-plugin': 42.0.2_jmndmlqs5cdfcel3mdhpg2gzfm
+  '@shopify/eslint-plugin': 42.0.3_jmndmlqs5cdfcel3mdhpg2gzfm
   '@types/node': 18.11.18
   '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
   '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
@@ -600,8 +600,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@shopify/eslint-plugin/42.0.2_jmndmlqs5cdfcel3mdhpg2gzfm:
-    resolution: {integrity: sha512-z8r01/KIgeI9YDiPhjrcDC4RjHppZwtNR8C5um6syAq76oXdpsNZLzaVUE3bhWfPuEuETQrEBwHiKxkbtizm6g==}
+  /@shopify/eslint-plugin/42.0.3_jmndmlqs5cdfcel3mdhpg2gzfm:
+    resolution: {integrity: sha512-Vve7bpv3qeiDSIViHx1v0oJ6jDSiwqFzUlJZXIcgU/AcQTMEVYHozhxnNO02XTVeN1CJS3hiMjq2ruZdBiKWPw==}
     peerDependencies:
       eslint: ^8.3.0
     dependencies:
