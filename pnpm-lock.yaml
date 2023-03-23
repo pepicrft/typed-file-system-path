@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': 7.21.3
-  '@changesets/cli': 2.26.0
+  '@changesets/cli': 2.26.1
   '@shopify/eslint-plugin': 42.0.3
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0
@@ -26,7 +26,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.21.3
-  '@changesets/cli': 2.26.0
+  '@changesets/cli': 2.26.1
   '@shopify/eslint-plugin': 42.0.3_iydl5uggel3veh2qu75tjso3py
   '@types/node': 18.15.5
   '@typescript-eslint/eslint-plugin': 5.56.0_iskin7c6dxqunwflhstekcjqmq
@@ -321,8 +321,8 @@ packages:
       '@changesets/types': 5.2.1
     dev: true
 
-  /@changesets/cli/2.26.0:
-    resolution: {integrity: sha512-0cbTiDms+ICTVtEwAFLNW0jBNex9f5+fFv3I771nBvdnV/mOjd1QJ4+f8KtVSOrwD9SJkk9xbDkWFb0oXd8d1Q==}
+  /@changesets/cli/2.26.1:
+    resolution: {integrity: sha512-XnTa+b51vt057fyAudvDKGB0Sh72xutQZNAdXkCqPBKO2zvs2yYZx5hFZj1u9cbtpwM6Sxtcr02/FQJfZOzemQ==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.20.7
