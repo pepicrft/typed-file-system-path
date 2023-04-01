@@ -19,8 +19,8 @@ devDependencies:
     specifier: 2.26.1
     version: 2.26.1
   '@shopify/eslint-plugin':
-    specifier: 42.0.3
-    version: 42.0.3(@babel/core@7.21.4)(eslint@8.37.0)(prettier@2.8.7)(typescript@4.9.5)
+    specifier: 42.1.0
+    version: 42.1.0(@babel/core@7.21.4)(eslint@8.37.0)(prettier@2.8.7)(typescript@4.9.5)
   '@types/node':
     specifier: 18.15.11
     version: 18.15.11
@@ -636,8 +636,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@shopify/eslint-plugin@42.0.3(@babel/core@7.21.4)(eslint@8.37.0)(prettier@2.8.7)(typescript@4.9.5):
-    resolution: {integrity: sha512-Vve7bpv3qeiDSIViHx1v0oJ6jDSiwqFzUlJZXIcgU/AcQTMEVYHozhxnNO02XTVeN1CJS3hiMjq2ruZdBiKWPw==}
+  /@shopify/eslint-plugin@42.1.0(@babel/core@7.21.4)(eslint@8.37.0)(prettier@2.8.7)(typescript@4.9.5):
+    resolution: {integrity: sha512-b45SXfXoE9+BvQjHrhInWlOMhsXrqIzts+setaXecR5WW6NcEKeeSfHvTvLVk231NHnrE5h+MuHp1Ci1pR5nfA==}
     peerDependencies:
       eslint: ^8.3.0
     dependencies:
@@ -986,7 +986,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       '@typescript-eslint/types': 5.57.0
-      eslint-visitor-keys: 3.3.0
+      eslint-visitor-keys: 3.4.0
     dev: true
 
   /@vitest/expect@0.29.8:
