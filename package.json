@@ -34,7 +34,7 @@
     "@shopify/eslint-plugin": "42.1.0",
     "@typescript-eslint/eslint-plugin": "5.59.9",
     "@typescript-eslint/parser": "5.59.9",
-    "@types/node": "18.16.16",
+    "@types/node": "18.16.17",
     "eslint": "8.42.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.27.5",
