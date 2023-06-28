@@ -30,7 +30,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.22.5",
-    "@changesets/cli": "2.26.1",
+    "@changesets/cli": "2.26.2",
     "@shopify/eslint-plugin": "42.1.0",
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
