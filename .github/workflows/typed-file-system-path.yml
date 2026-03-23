@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v3
-      - uses: pnpm/action-setup@v2.4.0
+      - uses: pnpm/action-setup@v2.4.1
         with:
           version: latest
       - name: Set Node.js
